@@ -199,7 +199,7 @@ CREATE TABLE Table_Name (
 
 ![Output8](output.png)
 
-**Question 9**
+**Question 9**.
 ---
 -- Paste Question 9 here
 
