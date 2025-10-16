@@ -105,123 +105,222 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+Create a table named Locations with the following columns:
+LocationID as INTEGER
+LocationName as TEXT
+Address as TEXT
 
 ```sql
--- Paste your SQL code below for Question 1
+CREATE TABLE Locations(
+LocationID INTEGER,
+LocationName TEXT,
+Address TEXT
+);
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1333" height="323" alt="image" src="https://github.com/user-attachments/assets/3441281b-c411-412b-b123-ca1452b3cd32" />
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write a SQL query to Add a new ParentsNumber column  as number and Adhar_Number as Number in the Student_details table.
 
 ```sql
--- Paste your SQL code below for Question 2
+ALTER TABLE Student_details
+ADD ParentsNumber number;
+ALTER TABLE Student_details
+ADD Adhar_Number number;
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1295" height="357" alt="image" src="https://github.com/user-attachments/assets/929a5e8d-b75a-4c62-bb86-c10632bc206d" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Create a table named Products with the following constraints:
+
+ProductID should be the primary key.
+ProductName should be NOT NULL.
+Price is of real datatype and should be greater than 0.
+Stock is of integer datatype and should be greater than or equal to 0.
 
 ```sql
--- Paste your SQL code below for Question 3
+CREATE TABLE Products(
+ProductID PRIMARY KEY,
+ProductName NOT NULL,
+Price REAL NOT NULL CHECK (Price>0),
+Stock INTEGER NOT NULL CHECK (Stock>=0)
+);
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1122" height="260" alt="image" src="https://github.com/user-attachments/assets/1fd631c7-e48e-4158-ac72-fa3f6b4fd772" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write an SQL Query to add the attributes designation, net_salary, and dob to the Companies table with the following data types:
+designation as VARCHAR(50)
+net_salary as NUMBER
+dob as DATE
 
 ```sql
--- Paste your SQL code below for Question 4
+ALTER TABLE Companies
+ADD designation varchar(50);
+
+ALTER TABLE Companies
+ADD net_salary number;
+
+ALTER TABLE Companies
+ADD dob date;
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1251" height="330" alt="image" src="https://github.com/user-attachments/assets/f05e6943-8bdb-467f-b649-2d02744c5e85" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Create a table named Employees with the following constraints:
+
+EmployeeID should be the primary key.
+FirstName and LastName should be NOT NULL.
+Email should be unique.
+Salary should be greater than 0.
+DepartmentID should be a foreign key referencing the Departments table.
 
 ```sql
--- Paste your SQL code below for Question 5
+CREATE TABLE Employees(
+EmployeeID INTEGER PRIMARY KEY,
+FirstName TEXT NOT NULL,
+LastName TEXT NOT NULL,
+Email TEXT UNIQUE,
+Salary REAL CHECK (Salary>0),
+DepartmentID  INTEGER,
+FOREIGN KEY (DepartmentID)
+REFERENCES Departments(DepartmentID)
+);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1335" height="335" alt="image" src="https://github.com/user-attachments/assets/01ef62ce-e1ad-4654-a29a-0acb2b673495" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Create a new table named orders with the following specifications:
+ord_id as TEXT with a length of 4.
+item_id as TEXT.
+ord_date as DATE.
+ord_qty as INTEGER.
+cost as INTEGER.
+The primary key is a composite key consisting of item_id and ord_date.
+ord_id and item_id should not accept NULL
 
 ```sql
--- Paste your SQL code below for Question 6
+CREATE TABLE orders(
+ord_id TEXT NOT NULL CHECK (LENGTH(ord_id)=4),
+item_id TEXT NOT NULL,
+ord_date DATE NOT NULL,
+ord_qty INTEGER,
+cost INTEGER,
+PRIMARY KEY(item_id,ord_date)
+);
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1170" height="203" alt="image" src="https://github.com/user-attachments/assets/6dba7e2e-e87d-4964-aacd-c387f70cd6bc" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Insert all products from Discontinued_products into Products.
+
+Table attributes are ProductID, ProductName, Price, Stock
 
 ```sql
--- Paste your SQL code below for Question 7
+INSERT INTO Products(
+ProductID,ProductName, Price, Stock)
+SELECT ProductID, ProductName, Price, Stock
+FROM Discontinued_products
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="981" height="252" alt="image" src="https://github.com/user-attachments/assets/c1fef863-e13b-4f9e-bc3f-e817b7143a26" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Insert a book with ISBN 978-1234567890, Title Data Science Essentials, Author Jane Doe, Publisher TechBooks, and Year 2024 into the Books table.
 
 ```sql
--- Paste your SQL code below for Question 8
+INSERT INTO Books(
+ISBN, Title,Author,Publisher,Year)
+VALUES('978-1234567890','Data Science Essentials','Jane Doe','TechBooks',2024)
+
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1176" height="212" alt="image" src="https://github.com/user-attachments/assets/34dc3694-7211-4804-9922-22ac607aa0e5" />
 
-**Question 9**.
+
+**Question 9**
 ---
--- Paste Question 9 here
+Create a table named ProjectAssignments with the following constraints:
+AssignmentID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+ProjectID as INTEGER should be a foreign key referencing Projects(ProjectID).
+AssignmentDate as DATE should be NOT NULL.
 
 ```sql
--- Paste your SQL code below for Question 9
+CREATE TABLE ProjectAssignments(
+AssignmentID INTEGER PRIMARY KEY,
+EmployeeID INTEGER,
+ProjectID INTEGER,
+AssignmentDate DATE NOT NULL,
+FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID),
+FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
+);
 ```
 
 **Output:**
+<img width="1124" height="197" alt="image" src="https://github.com/user-attachments/assets/28fd8f3b-06c3-46d9-b300-78bb15284bb9" />
 
-![Output9](output.png)
 
 **Question 10**
 ---
--- Paste Question 10 here
+Insert the following products into the Products table:
+
+|Name        |Category     |Price       |Stock|
+|----------  |-----------  |----------  |----------|
+|Smartphone  |Electronics  |800         |150|
+|Headphones  |Accessories  |200         |300|
 
 ```sql
--- Paste your SQL code below for Question 10
+INSERT INTO Products(
+Name,Category,Price,Stock)
+VALUES ('Smartphone','Electronics',800,150);
+INSERT INTO Products(
+Name,Category,Price,Stock)
+VALUES ('Headphones','Accessories',200,300)
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1115" height="300" alt="image" src="https://github.com/user-attachments/assets/5b057950-7219-4563-8f48-9262055cb8c7" />
+
+## COMPLETION STATUS
+
+<img width="1138" height="281" alt="image" src="https://github.com/user-attachments/assets/17d8c543-cce4-4c1a-9513-91443c596302" />
 
 
 ## RESULT
