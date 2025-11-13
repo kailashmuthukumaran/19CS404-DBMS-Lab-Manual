@@ -45,157 +45,142 @@ Used to retrieve records from a table.
 ```sql
 SELECT column1, column2 FROM table_name WHERE condition;
 ```
-**Question 1**
+### Question 1
 --
-Write a SQL statement to Change the category to 'Household' where product name contains 'Detergent' in the products table.
+--Write a SQL statement to Update the address to '58 Lakeview, Magnolia' where supplier ID is 5 in the suppliers table.
 
 ```sql
-UPDATE Products
-SET category = 'Household'
-WHERE product_name LIKE '%Detergent%';
+-- UPDATE Suppliers
+set address='58 Lakeview, Magnolia'
+where supplier_id=5;
 ```
 
-**Output:**
+### Output:
 
-<img width="1382" height="295" alt="image" src="https://github.com/user-attachments/assets/e1feacdd-96bd-4f8e-b9fe-32f9fdba5160" />
+![image](https://github.com/user-attachments/assets/781d2536-1091-44dc-9613-398ae3f13205)
 
 
-**Question 2**
+### Question 2
 ---
-Write a SQL statement to Update the product_name to 'Premium Bread' whose product ID is 5 in the products table.
+-- Write a SQL statement to double the availability of the product with product_id 1.
 
 ```sql
-UPDATE Products
-SET product_name = 'Premium Bread'
-WHERE product_id = 5;
-
+update products
+set availability=availability*2
+where product_id=1;
 ```
 
-**Output:**
+### Output:
+![image](https://github.com/user-attachments/assets/36bdadbc-1095-4879-bf47-d984c622de7b)
 
-<img width="1308" height="264" alt="image" src="https://github.com/user-attachments/assets/551872eb-74a3-4c69-af1f-edd58174541e" />
 
-
-**Question 3**
+### Question 3
 ---
-Write a SQL statement to Double the salary for employees in department 20 who have a job_id ending with 'MAN'
+--  Update the total selling price to quantity sold multiplied by updated selling price per unit where product id is 10 in the sales table.
 
 ```sql
-UPDATE Employees
-SET salary = salary * 2
-WHERE department_id = 20
-  AND job_id LIKE '%MAN';
+update SALES
+set total_sell_price=quantity*sell_price
+where product_id=10;
 ```
 
-**Output:**
+### Output:
+![image](https://github.com/user-attachments/assets/ca547d63-5b6f-42e8-8fa9-520e35431f5c)
 
-<img width="998" height="207" alt="image" src="https://github.com/user-attachments/assets/78bd16cb-07a0-4b2a-bcf6-2022e4c686f4" />
 
-
-**Question 4**
+### Question 4
 ---
-Write a SQL statement to Increase the selling price by 10% for all products in the 'Bakery' category in the products table.
+-- Write a SQL query to Delete customers from 'customer' table where 'GRADE' is not equal to 3.
 
 ```sql
-UPDATE Products
-SET sell_price = sell_price * 1.10
-WHERE category = 'Bakery';
+DELETE FROM Customer
+where GRADE<>3;
 ```
 
-**Output:**
+### Output:
+![image](https://github.com/user-attachments/assets/ba99906b-bbb2-4834-8383-621acb16548f)
 
-<img width="1318" height="301" alt="image" src="https://github.com/user-attachments/assets/e32f7962-c9e7-4541-9970-0377bccb8c30" />
 
-
-**Question 5**
+### Question 5
 ---
-Write a SQL statement to Update the address to '58 Lakeview, Magnolia' where supplier ID is 5 in the suppliers table.
-
-```sql
-UPDATE Suppliers
-SET address = '58 Lakeview, Magnolia'
-WHERE supplier_id = 5;
-```
-
-**Output:**
-
-<img width="1374" height="241" alt="image" src="https://github.com/user-attachments/assets/e226bb77-6f90-4e70-8ed6-b970adb8328a" />
-
-
-**Question 6**
----
-Write a SQL query to Delete customers from 'customer' table where 'CUST_NAME' has exactly 6 characters.
-
-```sql
-DELETE FROM customer
-WHERE LENGTH(CUST_NAME) = 6;
-```
-
-**Output:**
-
-<img width="1403" height="429" alt="image" src="https://github.com/user-attachments/assets/cf28f751-be81-47fb-8da1-15ea2df13b8d" />
-
-
-**Question 7**
----
-Write a SQL query to Delete customers from 'customer' table where 'CUST_COUNTRY' is neither 'India' nor 'USA'.
-
-```sql
-DELETE FROM customer
-WHERE CUST_COUNTRY NOT IN ('India', 'USA');
-
-```
-
-**Output:**
-
-<img width="1393" height="342" alt="image" src="https://github.com/user-attachments/assets/9aa26e59-a4cf-44ce-bab0-968528811f7e" />
-
-
-**Question 8**
----
-Write a SQL query to Delete All Doctors with a NULL Last Name
+--Write a SQL query to delete a doctor from Doctors table whose Specialization is 'Pediatrics' and First name is 'Michael'.
 
 ```sql
 DELETE FROM Doctors
-WHERE last_name IS NULL;
+where specialization='Pediatrics' and first_name='Michael';
 ```
 
-**Output:**
+### Output:
+![image](https://github.com/user-attachments/assets/c08ad2ca-5121-4fbb-9eb4-fd9dbf526915)
 
-<img width="945" height="537" alt="image" src="https://github.com/user-attachments/assets/e619c127-c100-4bfb-a66f-67b7c4612c91" />
 
-
-**Question 9**
+### Question 6
 ---
-Write a SQL query to Delete a Specific Surgery which was made on 28th Feb 2024.
+--Write a SQL query to Delete customers from 'customer' table where 'GRADE' is less than 2.
+```sql
+DELETE FROM Customer 
+where GRADE<2;
+```
+
+### Output:
+
+![image](https://github.com/user-attachments/assets/d0a5a975-1384-42d1-9dd0-e36c036da8c0)
+
+### Question 7
+---
+-- Write a SQL query to label rows in the Calculations table as 'Even' if value1 is even, otherwise 'Odd'.
 
 ```sql
-DELETE FROM Surgeries
-WHERE surgery_date = '2024-02-28';
-
+SELECT id,value1,
+case when (value1%2=0) THEN 'Even' else 'Odd'
+end as parity
+from Calculations;
 ```
 
-**Output:**
+### Output:=
+![image](https://github.com/user-attachments/assets/9d3a847c-16d3-4b6f-a9dd-3a927382060a)
 
-<img width="901" height="312" alt="image" src="https://github.com/user-attachments/assets/77435862-63ff-4d0c-a695-995e46577a2b" />
 
-
-**Question 10**
+### Question 8
 ---
-Write a SQL query to Delete customers from 'customer' table where 'GRADE' is exactly 2.
+--Write a SQL query to find all employees who were hired in the year 2022 from emp table.
 
 ```sql
-DELETE FROM customer
-WHERE GRADE = 2;
+SELECT * from emp
+where hiredate like '%2022%';
 ```
 
-**Output:**
+### Output:
+![image](https://github.com/user-attachments/assets/8d0fb572-e9ab-422c-9420-93a177cd0b45)
 
-<img width="569" height="464" alt="image" src="https://github.com/user-attachments/assets/2a9311d5-7438-445b-8f23-2e6443b7eab8" />
 
-## COMPLETION STATUS 
+### Question 9
+---
+-- Write a query to fetch the number of employees working in the department ‘HR’.
+```sql
+SELECT COUNT(*) 
+from EmployeeInfo
+where department='HR';
+```
 
-<img width="1047" height="358" alt="image" src="https://github.com/user-attachments/assets/1569f317-f8e2-4011-95b4-e38d8a39ef4d" />
+### Output:
+![image](https://github.com/user-attachments/assets/649f436b-38e1-404e-a848-2920e73a6667)
+
+
+### Question 10
+---
+--Write a SQL query to calculate the discounted price for products where the discount percentage is greater than 0, and order the results by discounted_price in ascending order. Return product_id, original_price, discount_percentage, and discounted_price.
+```sql
+SELECT product_id,original_price,discount_percentage,original_price*(1-discount_percentage) as discounted_price
+from Products
+where discount_percentage>0 
+ORDER BY discounted_price ASC;
+```
+
+### Output:
+![image](https://github.com/user-attachments/assets/d0fe0ae6-63a3-40d9-8105-b79dba0adb99)
+
+## 
 
 
 ## RESULT
